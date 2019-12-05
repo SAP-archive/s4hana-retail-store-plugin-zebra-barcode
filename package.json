@@ -1,0 +1,13 @@
+{
+  "name": "s4h.retail.store.zebra.barcode",
+  "version": "1.0.0",
+  "description": "SAP Sample Code s4h.retail.store.zebra.barcode to integrate a Zebra bar code scanner with In-Store Apps",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP-samples/s4hana-retail-store-plugin-zebra-barcode.git"
+  },
+  "author": "SAP SE",
+  "license": "SAP SAMPLE CODE LICENSE"
+}

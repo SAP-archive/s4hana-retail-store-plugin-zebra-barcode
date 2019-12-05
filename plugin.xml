@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="s4h.retail.store.zebra.barcode" version="1.0.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<name>S4HANA Retail Store Barcode for Zebra Devices</name>
+
+	<platform name="android">
+
+		<config-file target="config.xml" parent="/*">
+			<feature name="BarcodePlugin">
+				<param name="android-package" value="s4h.retail.store.zebra.barcode.BarcodePluginImpl" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="com.symbol.emdk.permission.EMDK" />
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<!-- The required flag set to false allows running the app without the EMDK (without laser scanner support) -->
+			<uses-library android:name="com.symbol.emdk" android:required="false" />
+		</config-file>
+
+		<!-- source files of the plugin (all .java files below src/android) -->
+		<source-file src="src/android/BarcodePluginImpl.java" target-dir="src/s4h/retail/store/zebra/barcode" />
+		<source-file src="src/android/ApplicationContextProvider.java" target-dir="src/s4h/retail/store/zebra/barcode" />
+		<source-file src="src/android/BarcodeScanCallback.java" target-dir="src/s4h/retail/store/zebra/barcode" />
+		<source-file src="src/android/EMDKBridge.java" target-dir="src/s4h/retail/store/zebra/barcode" />
+
+		<framework src="src/android/zebra.gradle" custom="true" type="gradleReference" />
+
+	</platform>
+
+</plugin>
