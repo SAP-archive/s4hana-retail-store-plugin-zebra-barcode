@@ -21,9 +21,9 @@ import com.symbol.emdk.barcode.StatusData;
 import s4h.retail.store.zebra.barcode.BarcodeScanCallback;
 import s4h.retail.store.zebra.barcode.ApplicationContextProvider;
 
-public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
-  private static final String LOG_TAG = "s4h.retail.store.zebra.barcode.EMDKBridge";
-  private Scanner scanner = null;
+public class EMDKBridge implements EMDKListener, StatusListener, DataListener {
+	private static final String LOG_TAG = "s4h.retail.store.zebra.barcode.EMDKBridge";
+	private Scanner scanner = null;
 	private EMDKManager emdkManager = null;
 	private BarcodeScanCallback scanHandler = null;
 	private ApplicationContextProvider applicationContextProvider = null;
@@ -31,17 +31,19 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 
 	/**
 	 * Creates an instance of the EMDKBridge
-	 * @param scanHandler Callback to handle scanned barcodes
-	 * @param contextProvider Callback that returns the current ApplicationContext of the Android activity
+	 * 
+	 * @param scanHandler     Callback to handle scanned barcodes
+	 * @param contextProvider Callback that returns the current ApplicationContext
+	 *                        of the Android activity
 	 */
-	public EMDKBridge(BarcodeScanCallback scanHandler, ApplicationContextProvider contextProvider){
+	public EMDKBridge(BarcodeScanCallback scanHandler, ApplicationContextProvider contextProvider) {
 		this.scanHandler = scanHandler;
 		this.applicationContextProvider = contextProvider;
 	}
 
 	/**
-	 * Initialize the EMDK itself.
-	 * This will throw a RuntimeException when the current device is not supported by the EMDK
+	 * Initialize the EMDK itself. This will throw a RuntimeException when the
+	 * current device is not supported by the EMDK
 	 */
 	public void initializeEmdk() throws NoClassDefFoundError, RuntimeException {
 		Log.d(LOG_TAG, "Initializing EMDK");
@@ -51,14 +53,14 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 		if (emdkResults.statusCode.equals(EMDKResults.STATUS_CODE.SUCCESS)) {
 			Log.d(LOG_TAG, "EMDK Manager Success");
 		} else {
-			Log.e(LOG_TAG,"EMDK Manager error");
+			Log.e(LOG_TAG, "EMDK Manager Error");
 		}
 	}
 
 	/**
 	 * Disable the scanner and release the EMDK
 	 */
-	public void shutdown(){
+	public void shutdown() {
 		if (scanner != null) {
 			try {
 				if (scanner.isEnabled()) {
@@ -72,6 +74,8 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 		if (emdkManager != null) {
 			emdkManager.release();
 		}
+		emdkManager = null;
+		scanner = null;
 	}
 
 	/**
@@ -86,15 +90,14 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 					scanner.cancelRead();
 				}
 				scanner.read();
-				Log.d(LOG_TAG,"Laser scanner activated");
+				Log.d(LOG_TAG, "Laser scanner activated");
 			} catch (ScannerException exception) {
-				Log.e(LOG_TAG,"Laser scanner activation failed", exception);
+				Log.e(LOG_TAG, "Laser scanner activation failed", exception);
 			}
 		} else {
-			Log.w(LOG_TAG,"No enabled scanner available");
+			Log.w(LOG_TAG, "No enabled scanner available");
 		}
 	}
-
 
 	/**
 	 * Stop scanning barcodes
@@ -107,21 +110,21 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 					scanner.cancelRead();
 				}
 				scanner.disable();
-				Log.d(LOG_TAG,"Laser scanner deactivated");
+				Log.d(LOG_TAG, "Laser scanner deactivated");
 			} catch (ScannerException exception) {
-				Log.e(LOG_TAG,"Laser scanner deactivation failed", exception);
+				Log.e(LOG_TAG, "Laser scanner deactivation failed", exception);
 			}
 		} else {
-			Log.w(LOG_TAG,"No enabled scanner available");
+			Log.w(LOG_TAG, "No enabled scanner available");
 		}
 	}
 
 	@Override
 	public void onOpened(EMDKManager emdkManager) {
 		this.emdkManager = emdkManager;
-		Log.d(LOG_TAG,"EMDK Manager opened");
+		Log.d(LOG_TAG, "EMDK Manager opened");
 
-	  if(scanner != null && scanner.isEnabled()){
+		if (scanner != null && scanner.isEnabled()) {
 			return;
 		}
 
@@ -134,15 +137,15 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 		while (iterator.hasNext()) {
 			ScannerInfo scannerInfo = iterator.next();
 			if (scannerInfo.getDeviceIdentifier().equals(BarcodeManager.DeviceIdentifier.INTERNAL_IMAGER1)) {
-				Log.i(LOG_TAG,"Scanner info: " + scannerInfo);
-				Log.i(LOG_TAG,"Scanner info (Connection Type): " + scannerInfo.getConnectionType());
-				Log.i(LOG_TAG,"Scanner info (Decoder Type): " + scannerInfo.getDecoderType());
-				Log.i(LOG_TAG,"Scanner info (Device Identifier): " + scannerInfo.getDeviceIdentifier());
-				Log.i(LOG_TAG,"Scanner info (Device Type): " + scannerInfo.getDeviceType());
-				Log.i(LOG_TAG,"Scanner info (Friendly Name): " + scannerInfo.getFriendlyName());
-				Log.i(LOG_TAG,"Scanner info (Model Number): " + scannerInfo.getModelNumber());
-				Log.i(LOG_TAG,"Scanner info (Connected): " + scannerInfo.isConnected());
-				Log.i(LOG_TAG,"Scanner info (Default Scanner): " + scannerInfo.isDefaultScanner());
+				Log.i(LOG_TAG, "Scanner info: " + scannerInfo);
+				Log.i(LOG_TAG, "Scanner info (Connection Type): " + scannerInfo.getConnectionType());
+				Log.i(LOG_TAG, "Scanner info (Decoder Type): " + scannerInfo.getDecoderType());
+				Log.i(LOG_TAG, "Scanner info (Device Identifier): " + scannerInfo.getDeviceIdentifier());
+				Log.i(LOG_TAG, "Scanner info (Device Type): " + scannerInfo.getDeviceType());
+				Log.i(LOG_TAG, "Scanner info (Friendly Name): " + scannerInfo.getFriendlyName());
+				Log.i(LOG_TAG, "Scanner info (Model Number): " + scannerInfo.getModelNumber());
+				Log.i(LOG_TAG, "Scanner info (Connected): " + scannerInfo.isConnected());
+				Log.i(LOG_TAG, "Scanner info (Default Scanner): " + scannerInfo.isDefaultScanner());
 				laserScannerInfo = scannerInfo;
 				break;
 			}
@@ -157,15 +160,15 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 	@Override
 	public void onClosed() {
 		// Intentionally empty
-  }
-  
+	}
+
 	@Override
 	public void onData(ScanDataCollection scanDataCollection) {
 		if (scanDataCollection != null && scanDataCollection.getResult().equals(ScannerResults.SUCCESS)) {
 			ArrayList<ScanDataCollection.ScanData> scanData = scanDataCollection.getScanData();
 			if (scanData.size() > 0) {
 				String scannedBarcode = scanData.get(0).getData();
-				Log.d(LOG_TAG,"Data scanned: " + scannedBarcode);
+				Log.d(LOG_TAG, "Data scanned: " + scannedBarcode);
 				this.scanHandler.handle(scannedBarcode);
 			}
 		}
@@ -174,12 +177,12 @@ public class EMDKBridge implements EMDKListener, StatusListener, DataListener{
 	@Override
 	public void onStatus(StatusData statusData) {
 		StatusData.ScannerStates scannerState = statusData.getState();
-		Log.d(LOG_TAG,"Scanner new state: " + scannerState);
+		Log.d(LOG_TAG, "Scanner new state: " + scannerState);
 		if (isScannerActivated && scannerState.equals(StatusData.ScannerStates.IDLE) && !scanner.isReadPending()) {
 			try {
 				scanner.read();
 			} catch (ScannerException exception) {
-				Log.e(LOG_TAG,"Re-enabling the Laser scanner failed", exception);
+				Log.e(LOG_TAG, "Re-enabling the Laser scanner failed", exception);
 			}
 		}
 	}
