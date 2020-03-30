@@ -1,4 +1,4 @@
-# SAP S/4HANA Retail Store Plugin for Zebra Barcodescanner integration
+# SAP S/4HANA Retail Store Plug-in for Zebra Barcodescanner Integration
 
 This repository contains a sample implementation of a Cordova Plugin to enable the on-device laser scanner as an input device for the [In-Store Merchandise and Inventory Management Fiori Apps](https://help.sap.com/viewer/9905622a5c1f49ba84e9076fc83a9c2c/latest/en-US/4018b657ace85b3be10000000a4450e5.html).
 
@@ -40,4 +40,4 @@ If you have any issues with this sample, please open a report using [GitHub issu
 
 ## License
 
-Copyright © 2019 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE file](LICENSE).
+Copyright © 2019 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE file](LICENSE).
