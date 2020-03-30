@@ -1,19 +1,19 @@
-# SAP S/4HANA Retail Store Plug-in for Zebra Barcodescanner Integration
+# SAP S/4HANA Retail Store Plug-in for Zebra Barcode Scanner Integration
 
 This repository contains a sample implementation of a Cordova Plugin to enable the on-device laser scanner as an input device for the [In-Store Merchandise and Inventory Management Fiori Apps](https://help.sap.com/viewer/9905622a5c1f49ba84e9076fc83a9c2c/latest/en-US/4018b657ace85b3be10000000a4450e5.html).
 
 ## Description
 
-This sample code can be used to integrate the bar code scanner of a Zebra TC75x as an input device for the **In-Store Merchandise and Inventory Management Fiori Apps** when used as a plugin for the **Custom SAP Fiori Client**.
+This sample code can be used to integrate the barcode scanner of a Zebra TC75x as an input device for the **In-Store Merchandise and Inventory Management Fiori Apps** when used as a plugin for the **Custom SAP Fiori Client**.
 
-### Bar Code Scanner
+### Barcode Scanner
 
-Store associates use bar code scanners to scan the global trade item numbers (GTIN) of products that are tagged with bar codes. This enables store associates to manually identify products in a store, for example, to order the scanned products.
+Store associates use barcode scanners to scan the global trade item numbers (GTIN) of products that are tagged with barcodes. This enables store associates to manually identify products in a store, for example, to order the scanned products.
 
 ## Requirements
 
 - At least Android 7.x running on your Zebra device
-- A Zebra TC75x Mobile Device
+- A Zebra TC75x mobile device
 - An SAP S/4 HANA with the **In-Store Merchandise and Inventory Management Fiori Apps** up and running
 
 ### Third-Party Dependencies
