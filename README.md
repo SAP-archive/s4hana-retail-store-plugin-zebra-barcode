@@ -6,6 +6,8 @@ SPDX-License-Identifier: Apache-2.0
 
 # SAP S/4HANA Retail Store Plug-in for Zebra Barcode Scanner Integration
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/s4hana-retail-store-plugin-zebra-barcode)](https://api.reuse.software/info/github.com/SAP-samples/s4hana-retail-store-plugin-zebra-barcode)
+
 This repository contains a sample implementation of a Cordova Plugin to enable the on-device laser scanner as an input device for the [In-Store Merchandise and Inventory Management Fiori Apps](https://help.sap.com/viewer/9905622a5c1f49ba84e9076fc83a9c2c/latest/en-US/4018b657ace85b3be10000000a4450e5.html).
 
 ## Description
