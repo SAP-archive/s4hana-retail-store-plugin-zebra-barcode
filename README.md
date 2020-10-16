@@ -46,6 +46,6 @@ After that, please proceed with the build process.
 
 If you have any issues with this sample, please open a report using [GitHub issues](https://github.com/SAP-samples/s4hana-retail-store-plugin-zebra-barcode/issues). Please note that this project is provided "as-is" without any official support either explicit or implied. We will try to answer your questions but there are no guarantees regarding the response time, future features or bugfixes.
 
-##
+## License 
 
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
